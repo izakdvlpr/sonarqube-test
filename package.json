@@ -1,0 +1,33 @@
+{
+  "name": "sonarqube-test",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "start": "bun src/index.ts",
+    "check": "biome check --write",
+    "format": "biome format --write",
+    "sonar:up": "docker compose up -d postgres sonarqube",
+    "sonar:down": "docker compose down",
+    "sonar:logs": "docker compose logs -f sonarqube",
+    "sonar:scan": "docker compose --profile scan run --rm sonar-scanner"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-session": "^1.19.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
+    "@types/bun": "^1.2.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/express-session": "^1.19.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.0"
+  }
+}
